@@ -1,0 +1,25 @@
+{
+  "intents": [
+    {
+      "intent": "LookupItemPriceIntent",
+      "slots": [
+        {
+          "name": "Item",
+          "type": "ITEM_LIST"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.RepeatIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

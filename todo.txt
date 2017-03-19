@@ -1,0 +1,11 @@
+[*] init project
+[*] get project running
+[*] add to github
+[*] create s3 bucket
+[*] get deployment working
+[] create outline for project
+
+
+
+---
+outline:
