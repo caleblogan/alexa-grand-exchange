@@ -9,9 +9,11 @@ const RS_API_ENDPOINT = 'http://services.runescape.com/m=itemdb_oldschool/api/ca
 module.exports = {
   getItemPrice: function(itemSlotName, cb) {
     let itemName = fuzzymatch(itemIDS, itemSlotName)
+    console.log('Fuzzymatch res:', itemName)
     let itemID = itemIDS[itemName]
     getItemAPI(itemID, function(item) {
-      cb(item['current']['price'])
+      console.log('Item price:', item['current']['price'])
+      cb(itemName, item['current']['price'])
     })
   }
 }

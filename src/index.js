@@ -13,14 +13,16 @@ const handlers = {
     },
     'LookupItemPriceIntent': function() {
       let itemSlot = this.event.request.intent.slots.Item
-      let itemName = itemSlot ? itemSlot.value.toLowerCase() : null
+      let itemSlotName = itemSlot ? itemSlot.value.toLowerCase() : null
       console.log('Item Slot:', itemSlot)
-      console.log('Item Name:', itemName)
+      console.log('Item Name:', itemSlotName)
 
-      if (itemName) {
-        ge.getItemPrice(itemName, (itemPrice) => {
+      if (itemSlotName) {
+        ge.getItemPrice(itemSlotName, (itemName, itemPrice) => {
           try {
-            this.emit(':tell', 'The price of ' + itemName + ' is ' + itemPrice + '.')
+            let cardTitle = itemName
+            let cardText = `The price of ${itemName} is ${itemPrice}.`
+            this.emit(':tellWithCard', 'The price of ' + itemName + ' is ' + itemPrice + '.', cardTitle, cardText)
           } catch(e) {
             this.emit(':tellWithCard', 'Error with item' + itemName, 'Error Title', 'Item Name spoken: ' + itemName)
           }
