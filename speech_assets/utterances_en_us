@@ -4,3 +4,5 @@ LookupItemPriceIntent what is the price of the {Item}
 LookupItemPriceIntent what's the price of {Item}
 LookupItemPriceIntent whats the price of {Item}
 LookupItemPriceIntent what is the price of {Item}
+LookupItemPriceIntent for the price of the {Item}
+LookupItemPriceIntent for the price of {Item}

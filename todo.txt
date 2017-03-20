@@ -6,6 +6,9 @@
 [*] get deployment working
 [*] get itemname to id map
 [*] research and outline project
+[*] get cloudwatch logs working
+[] work on basic fuzzy matching
+[] get basic flow working from the speech interface to the rs api
 
 
 

@@ -12,7 +12,22 @@ const handlers = {
         this.emit(':ask', this.attributes.speechOutput, this.attributes.repromptSpeech)
     },
     'LookupItemPriceIntent': function() {
-      this.emit(':tell', 'Thanks for using the grand exchange.')
+      let itemSlot = this.event.request.intent.slots.Item
+      let itemName = itemSlot ? itemSlot.value.toLowerCase() : null
+      console.log('Item Slot:', itemSlot)
+      console.log('Item Name:', itemName)
+
+      if (itemName) {
+        ge.getItemPrice(itemName, (itemPrice) => {
+          try {
+            this.emit(':tell', 'The price of ' + itemName + ' is ' + itemPrice + '.')
+          } catch(e) {
+            this.emit(':tellWithCard', 'Error with item' + itemName, 'Error Title', 'Item Name spoken: ' + itemName)
+          }
+        })
+      } else {
+        this.emit(':tell', 'The item you requested was not found.')
+      }
     },
     'AMAZON.HelpIntent': function () {
         this.attributes.speechOutput = this.t('HELP_MESSAGE')

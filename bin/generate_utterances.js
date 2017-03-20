@@ -11,6 +11,7 @@ let dictionary = {
 let slots = {};
 let templates = [
   "LookupItemPriceIntent what{'s|s| is} the price of {the |}{-|Item}",
+  "LookupItemPriceIntent for the price of {the |}{-|Item}",
 ]
 let exhaustive = true
 
