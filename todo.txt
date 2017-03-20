@@ -1,11 +1,19 @@
+// Skill that uses the 07 rs ge api to lookup info about items
 [*] init project
 [*] get project running
 [*] add to github
 [*] create s3 bucket
 [*] get deployment working
-[] create outline for project
+[*] get itemname to id map
+[*] research and outline project
 
 
 
 ---
 outline:
+- use rs ge api to get prices and ge info
+  - http://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=4151
+- allow user to ask for the price of an item
+- allow user to ask for full details about item
+- allow user to search and navigate through serach
+  - /api/catalogue/items.json?category=1&alpha=y&page=z

@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/clogan202/alexa-grand-exchange#readme",
   "dependencies": {
-    "alexa-sdk": "^1.0.7"
+    "alexa-sdk": "^1.0.7",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "alexa-utterances": "^0.2.1"

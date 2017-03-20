@@ -1,7 +1,9 @@
 'use strict'
 const Alexa = require('alexa-sdk')
+const ge = require('./grandexchange')
+const config = require('./config.json')
 
-const APP_ID = ''
+const APP_ID = config['APP_ID']
 
 const handlers = {
     'LaunchRequest': function () {
@@ -34,7 +36,7 @@ const languageStrings = {
     },
     'en-US': {
         translation: {
-            SKILL_NAME: 'Grand Exchange',
+            SKILL_NAME: 'The Grand Exchange',
             WELCOME_MESSAGE: "Welcome to %s. You can ask a question like, what\'s the price of coal... Now, what can I help you with.",
             WELCOME_REPROMT: 'For instructions on what you can say, please say help me.',
             DISPLAY_CARD_TITLE: '%s - Price for %s.',

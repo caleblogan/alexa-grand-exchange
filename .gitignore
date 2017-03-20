@@ -1,3 +1,7 @@
+# Config files
+src/config.json
+
+
 # Logs
 logs
 *.log
