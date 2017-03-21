@@ -7,8 +7,19 @@
 [*] get itemname to id map
 [*] research and outline project
 [*] get cloudwatch logs working
-[] work on basic fuzzy matching
-[] get basic flow working from the speech interface to the rs api
+[*] work on basic fuzzy matching
+[*] get basic flow working from the speech interface to the rs api
+[*] convert money to the right speech text eg. 3.2m => three point two mill
+[] add more utterances
+[] try different string matching algo
+
+[] submit project
+
+
+
+
+Bugs
+[] 'alexa ask ge for armadyll'
 
 
 

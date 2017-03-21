@@ -7,6 +7,7 @@ const itemIDS = require('./rs07_item_ids')
 const RS_API_ENDPOINT = 'http://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item='
 
 module.exports = {
+  // Calls the cb with the itemName and itemPrice in format 3.2b 3.2m 3.2k 333
   getItemPrice: function(itemSlotName, cb) {
     let itemName = fuzzymatch(itemIDS, itemSlotName)
     console.log('Fuzzymatch res:', itemName)
@@ -15,8 +16,28 @@ module.exports = {
       console.log('Item price:', item['current']['price'])
       cb(itemName, item['current']['price'])
     })
+  },
+  // Takes in a itemPrice in the format of 333 3.2m 1.2k
+  // Returns the price in the format alexa needs to sound right
+  // like 3.2 mill; 1.2 k; 333 gp
+  convertPriceToSSML: function(rawPrice) {
+    rawPrice += ''
+    let priceSSML = ''
+    if (rawPrice.indexOf('b') > -1) {
+      priceSSML = rawPrice.replace('b', ' bill')
+    } else if (rawPrice.indexOf('m') > -1) {
+      priceSSML = rawPrice.replace('m', ' mill')
+    } else if (rawPrice.indexOf('k') > -1) {
+      priceSSML = rawPrice
+    } else if (rawPrice.indexOf('gp') > -1) {
+      priceSSML = rawPrice
+    } else {
+      priceSSML = rawPrice + ' gp'
+    }
+    return priceSSML
   }
 }
+
 
 function getItemAPI(itemID, cb) {
   request.get({url: RS_API_ENDPOINT + itemID, json: true})
@@ -28,10 +49,6 @@ function getItemAPI(itemID, cb) {
         console.log('Error:', err)
       })
 }
-
-
-// getItemAPI('4151', (itemPrice) => console.log('Item Price:', itemPrice))
-module.exports.getItemPrice('abyssal whip', price => console.log('The price:', price))
 
 function fuzzymatch(lookuptable, searchword) {
   let metaphone = natural.Metaphone

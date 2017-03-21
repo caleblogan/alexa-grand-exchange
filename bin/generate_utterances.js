@@ -12,6 +12,8 @@ let slots = {};
 let templates = [
   "LookupItemPriceIntent what{'s|s| is} the price of {the |}{-|Item}",
   "LookupItemPriceIntent for the price of {the |}{-|Item}",
+  "LookupItemPriceIntent to look up {the |the price of |}{-|Item}",
+  "LookupItemPriceIntent to search for the price of {-|Item}",
 ]
 let exhaustive = true
 

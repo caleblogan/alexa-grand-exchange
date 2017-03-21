@@ -22,7 +22,8 @@ const handlers = {
           try {
             let cardTitle = itemName
             let cardText = `The price of ${itemName} is ${itemPrice}.`
-            this.emit(':tellWithCard', 'The price of ' + itemName + ' is ' + itemPrice + '.', cardTitle, cardText)
+            let itemPriceSSML = ge.convertPriceToSSML(itemPrice)
+            this.emit(':tellWithCard', 'The price of ' + itemName + ' is ' + itemPriceSSML + '.', cardTitle, cardText)
           } catch(e) {
             this.emit(':tellWithCard', 'Error with item' + itemName, 'Error Title', 'Item Name spoken: ' + itemName)
           }

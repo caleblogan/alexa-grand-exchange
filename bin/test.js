@@ -5,9 +5,10 @@ const itemIDS = require('../src/rs07_item_ids')
 
 const RS_API_ENDPOINT = 'http://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item='
 
-// request.get({url: RS_API_ENDPOINT + '4151', json: true}, function(err, res, body) {
-//   console.log(body['item']['current']['price'])
-// })
+request.get({url: RS_API_ENDPOINT + '2619', json: true}, function(err, res, body) {
+  console.log(body['item']['current']['price'])
+  console.log(convertPriceToSSML(body['item']['current']['price']))
+})
 
 function fuzzymatch(lookuptable, searchword) {
   let metaphone = natural.Metaphone
@@ -42,10 +43,10 @@ function fuzzymatch(lookuptable, searchword) {
   }
   return minItem
 }
-let start = Date.now()
-console.log('Are alike:', fuzzymatch(itemIDS, 'bandos good  sword'))
-let totalTime = Date.now() - start
-console.log('Time:', totalTime + 'ms')
+// let start = Date.now()
+// console.log('Are alike:', fuzzymatch(itemIDS, 'bandos good  sword'))
+// let totalTime = Date.now() - start
+// console.log('Time:', totalTime + 'ms')
 
 
 // console.log(natural.LevenshteinDistance('gold ore', 'gold ore'))
@@ -71,3 +72,19 @@ console.log('Time:', totalTime + 'ms')
 // } else {
 //   console.log('Invalid name:', itemName)
 // }
+function convertPriceToSSML(rawPrice) {
+  rawPrice += ''
+  let priceSSML = ''
+  if (rawPrice.indexOf('b') > -1) {
+    priceSSML = rawPrice.replace('b', ' bill')
+  } else if (rawPrice.indexOf('m') > -1) {
+    priceSSML = rawPrice.replace('m', ' mill')
+  } else if (rawPrice.indexOf('k') > -1) {
+    priceSSML = rawPrice
+  } else if (rawPrice.indexOf('gp') > -1) {
+    priceSSML = rawPrice
+  } else {
+    priceSSML = rawPrice + ' gp'
+  }
+  return priceSSML
+}
