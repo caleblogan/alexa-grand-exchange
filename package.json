@@ -28,6 +28,7 @@
     "request": "^2.81.0"
   },
   "devDependencies": {
-    "alexa-utterances": "^0.2.1"
+    "alexa-utterances": "^0.2.1",
+    "scrape-it": "^3.3.1"
   }
 }

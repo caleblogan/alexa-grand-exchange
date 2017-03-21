@@ -13,17 +13,26 @@ const handlers = {
     },
     'LookupItemPriceIntent': function() {
       let itemSlot = this.event.request.intent.slots.Item
-      let itemSlotName = itemSlot ? itemSlot.value.toLowerCase() : null
+      let itemSlotName = itemSlot ? itemSlot.value : null
       console.log('Item Slot:', itemSlot)
       console.log('Item Name:', itemSlotName)
 
       if (itemSlotName) {
-        ge.getItemPrice(itemSlotName, (itemName, itemPrice) => {
+        itemSlotName = itemSlotName.toLowerCase()
+        ge.getItemPriceInfo(itemSlotName, (itemName, itemPrice, imagess) => {
           try {
-            let cardTitle = itemName
+            let cardTitle = titleCase(itemName)
             let cardText = `The price of ${itemName} is ${itemPrice}.`
             let itemPriceSSML = ge.convertPriceToSSML(itemPrice)
-            this.emit(':tellWithCard', 'The price of ' + itemName + ' is ' + itemPriceSSML + '.', cardTitle, cardText)
+            let speechText = `The price of ${itemName} is ${itemPriceSSML}.`
+            let imageBaseUrl = 'https://s3.amazonaws.com/alexagrandexchange/imgs/'
+            let images = {
+              // smallImageUrl: imageBaseUrl + '/dragon_chainbody.png',
+              // largeImageUrl: imageBaseUrl + 'gold_ore.png'
+              smallImageUrl: 'https://s3.amazonaws.com/alexagrandexchange/imgs/gold_ore.png',
+              largeImageUrl: 'https://s3.amazonaws.com/alexagrandexchange/imgs/gold_ore.png'
+            }
+            this.emit(':tellWithCard', speechText, cardTitle, cardText, images)
           } catch(e) {
             this.emit(':tellWithCard', 'Error with item' + itemName, 'Error Title', 'Item Name spoken: ' + itemName)
           }
@@ -76,3 +85,13 @@ exports.handler = (event, context) => {
     alexa.registerHandlers(handlers)
     alexa.execute()
 };
+
+function titleCase(str) {
+  let words = str.split(' ')
+  for (let i = 0; i < words.length; ++i) {
+    let word = words[i].toLowerCase()
+    word = word[0].toUpperCase() + word.slice(1)
+    words[i] = word
+  }
+  return words.join(' ')
+}
