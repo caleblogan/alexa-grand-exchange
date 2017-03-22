@@ -19,10 +19,10 @@ fs.readFile(ITEMS_FILENAME, 'utf-8', function(err, inputdata) {
     let itemname = itemNames[i]
     let id = inputdata[itemname]
     itemname = itemname.replace('(unf)', ' unfinished')
-    itemname = itemname.replace('(1)', ' one')
-    itemname = itemname.replace('(2)', ' two')
-    itemname = itemname.replace('(3)', ' three')
-    itemname = itemname.replace('(4)', ' four')
+    // itemname = itemname.replace('(1)', ' one')
+    // itemname = itemname.replace('(2)', ' two')
+    // itemname = itemname.replace('(3)', ' three')
+    // itemname = itemname.replace('(4)', ' four')
     itemname = itemname.replace('(p)', ' poison')
     itemname = itemname.replace('(p+)', ' poison plus')
     itemname = itemname.replace('(p++)', ' poison plus plus')

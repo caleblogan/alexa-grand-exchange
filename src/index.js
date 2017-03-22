@@ -19,20 +19,15 @@ const handlers = {
 
       if (itemSlotName) {
         itemSlotName = itemSlotName.toLowerCase()
-        ge.getItemPriceInfo(itemSlotName, (itemName, itemPrice, imagess) => {
+        ge.getItemPriceInfo(itemSlotName, (itemNameSpeech, itemNameText, itemPrice) => {
           try {
-            let cardTitle = titleCase(itemName)
-            let cardText = `The price of ${itemName} is ${itemPrice}.`
+            let cardTitle = titleCase(itemNameText)
+            let cardText = `The price of ${itemNameText} is ${itemPrice}.`
             let itemPriceSSML = ge.convertPriceToSSML(itemPrice)
-            let speechText = `The price of ${itemName} is ${itemPriceSSML}.`
+            let speechText = `The price of ${itemNameSpeech} is ${itemPriceSSML}.`
             let imageBaseUrl = 'https://s3.amazonaws.com/alexagrandexchange/imgs/'
-            let images = {
-              // smallImageUrl: imageBaseUrl + '/dragon_chainbody.png',
-              // largeImageUrl: imageBaseUrl + 'gold_ore.png'
-              smallImageUrl: 'https://s3.amazonaws.com/alexagrandexchange/imgs/gold_ore.png',
-              largeImageUrl: 'https://s3.amazonaws.com/alexagrandexchange/imgs/gold_ore.png'
-            }
-            this.emit(':tellWithCard', speechText, cardTitle, cardText, images)
+
+            this.emit(':tellWithCard', speechText, cardTitle, cardText)
           } catch(e) {
             this.emit(':tellWithCard', 'Error with item' + itemName, 'Error Title', 'Item Name spoken: ' + itemName)
           }

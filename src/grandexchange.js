@@ -21,7 +21,7 @@ module.exports = {
         smallImageUrl: item['icon'].replace('http', 'https'),
         largeImageUrl: item['icon_large'].replace('http', 'https')
       }
-      cb(itemName, item['current']['price'], images)
+      cb(itemName, item['name'], item['current']['price'])
     })
   },
   // Takes in a itemPrice in the format of 333 3.2m 1.2k

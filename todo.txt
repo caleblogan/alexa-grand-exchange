@@ -11,26 +11,26 @@
 [*] get basic flow working from the speech interface to the rs api
 [*] convert money to the right speech text eg. 3.2m => three point two mill
 [*] 108.9k is not spoken right. it sounds like 1 0 8 dot 9 k
-[] Format card
-  [] add image to card
-    [] scrape images
-    [] upload images to s3
-    [*] add code to point to images in index.js
+[*] Format card
   [*] capitalize title
-[] add more utterances
+  [*] add correct name eg. (p+) instead of poison plus
+[*] add more utterances
+[*] add slots to portal
 [*] try different string matching algo
 [*] create script to unpack item slot names like dragon dagger(p+) => dragon dagger poisoned plus
 [*] update item list
 
-[] submit project
+[*] submit project
 
 
 
 
-Bugs
-[] item list is missing item like dragon warhammer, dragon platebody
+Bugs:
 
 
+Future:
+[] add image to card
+  [] try getting all images from rs api
 
 
 ---

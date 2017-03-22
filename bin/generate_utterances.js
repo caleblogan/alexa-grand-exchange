@@ -12,7 +12,7 @@ let slots = {};
 let templates = [
   "LookupItemPriceIntent what{'s|s| is} the price of {the |}{-|Item}{ are| is|}",
   "LookupItemPriceIntent what{'s|s| is} the price of a {-|Item}",
-  "LookupItemPriceIntent price {of |of a |}{-|Item}",
+  "LookupItemPriceIntent {the |}price {of |of a |}{-|Item}",
   "LookupItemPriceIntent for {a |}{-|Item}",
   "LookupItemPriceIntent for the price of {the |a |}{-|Item}",
   "LookupItemPriceIntent to look up {the |the price of |the price of a |}{-|Item}",
