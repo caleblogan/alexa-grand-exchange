@@ -26,6 +26,7 @@
 
 
 Bugs:
+[] Card text does not inlcude gp after price for amounts under k
 
 
 Future:

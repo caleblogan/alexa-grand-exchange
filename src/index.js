@@ -58,7 +58,7 @@ const languageStrings = {
     },
     'en-US': {
         translation: {
-            SKILL_NAME: 'The Grand Exchange',
+            SKILL_NAME: 'The Marketplace',
             WELCOME_MESSAGE: "Welcome to %s. You can ask a question like, what\'s the price of coal... Now, what can I help you with.",
             WELCOME_REPROMT: 'For instructions on what you can say, please say help me.',
             DISPLAY_CARD_TITLE: '%s - Price for %s.',
