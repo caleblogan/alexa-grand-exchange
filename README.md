@@ -7,8 +7,8 @@ Check it out on the Alexa skills directory: <a href="https://www.amazon.com/cale
 - "Alexa, ask Marketplace what's the price of coal"
 
 # How to Setup
-- Create a new alexa skill on amazon developers dashboard
-- Add the slots and utterances to skill and fill at the rest appropriately
+- Create a new alexa skill on the amazon developers dashboard
+- Add the slots and utterances to the skill and fill out the rest appropriately
 - Create a new lambda function (Node.js 4.3) and name the handler index.handler
-- Upload the bin/dist.zip to lambda function
-- Make sure to point alexa skill to lambda function
+- Upload the bin/dist.zip to the lambda function
+- Make sure to point the alexa skill to the lambda function
